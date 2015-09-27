@@ -32,3 +32,4 @@ build
 
 # Pests
 .DS_Store
+.sass-cache

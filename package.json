@@ -3,13 +3,13 @@
   "productName": "SweetVPN",
   "version": "0.1.0",
   "description": "A sweet VPN client",
-  "main": "src/sweet.js",
+  "main": "./dist/sweet.js",
   "scripts": {
     "test": "npm test",
-    "build": "babel src -D -d dist --compress",
-    "watch": "babel src -D -d dist -w",
+    "build": "babel src -d dist --compress && sass --update -f -t compressed src/sass:dist/css",
+    "watch": "babel src -D -d dist -w && sass --watch -f src/sass/:dist/css",
     "package": "npm run build && babel-node package",
-    "launch": "babel src | electron ./"
+    "launch": "electron ./dist/menu"
   },
   "repository": {
     "type": "git",
@@ -35,8 +35,10 @@
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-eslint": "^4.1.3",
+    "dialog": "^0.1.8",
     "electron-packager": "^5.1.0",
     "electron-prebuilt": "^0.33.3",
-    "headway": "^0.3.0"
+    "headway": "^0.3.0",
+    "sass": "^0.5.0"
   }
 }

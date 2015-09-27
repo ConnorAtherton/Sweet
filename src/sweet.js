@@ -1,6 +1,5 @@
 import React from 'react'
-import AppComponent from './components/app'
+import App from './components/app'
 
-React.render(<App />, document.getElementById('app'))
-
+React.render(<App />, document.body)
 
