@@ -6,8 +6,10 @@
   "main": "./dist/sweet.js",
   "scripts": {
     "test": "npm test",
-    "build": "babel src -d dist --compress && sass --update -f -t compressed src/sass:dist/css",
-    "watch": "babel src -D -d dist -w && sass --watch -f src/sass/:dist/css",
+    "build": "babel src -D -d dist --compress && sass --update -f -t compressed src/sass:dist/css",
+    "watch": "npm run watch-js; npm run watch-sass",
+    "watch-js": "babel src -D -d dist -w",
+    "watch-sass": "sass --watch -q src/sass/:dist/css",
     "package": "npm run build && babel-node package",
     "launch": "electron ./dist/menu"
   },

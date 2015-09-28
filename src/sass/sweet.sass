@@ -1,22 +1,56 @@
+$grey-light: #ccc
+$grey-dark: #616367
+
+*
+  box-sizing: border-box
+
 html,
 body
   margin: 0
+  // just for now
+  font-family: sans-serif
+  color: $grey-dark
 
 header,
 footer
   padding: 10px
   line-height: 20px
-  position: absolute
+  position: fixed
   display: block
   width: 100%
+  font-size: 13px
+  background-image: linear-gradient(#fff, rgba(221, 221, 221, 0.66))
 
 header
-  border-bottom: 1px solid blue
+  border-bottom: 1px solid $grey-light
   top: 0
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.08)
 
 footer
-  border-top: 1px solid blue
+  border-top: 1px solid $grey-light
   bottom: 0
+  box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.08)
+
+//
+// Status component
+//
+.status__message
+  float: left
+.status__IP
+  float: right
+.status
+  width: 15px
+  height: 15px
+  transform: translate3d(-50%, -50%, 0px)
+  border-radius: 20px
+  top: 50%
+  left: 50%
+  position: absolute
+  // TODO: make these prettier
+  background-color: red
+
+  &.status--connected
+    background-color: green
 
 .certificateList
   margin: 40px 10px
