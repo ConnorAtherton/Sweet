@@ -29,5 +29,5 @@ menu.on('ready', () => {
 })
 
 menu.on('after-create-window', () => {
-  menu.window.openDevTools()
+  // menu.window.openDevTools()
 })

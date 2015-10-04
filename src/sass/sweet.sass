@@ -1,15 +1,30 @@
+//
+// Variables
+//
 $grey-light: #ccc
 $grey-dark: #616367
 
+$sweet-purple: #626BCB
+$sweet-purple-saturated: rgba(104, 98, 203, .06)
+
+$state-connected: green
+$state-disconnected: red
+$state-pending: orange
+
+//
+// Resets
+//
 *
   box-sizing: border-box
 
 html,
 body
   margin: 0
+  height: 100%
   // just for now
   font-family: sans-serif
   color: $grey-dark
+  font-size: 13px
 
 header,
 footer
@@ -18,8 +33,14 @@ footer
   position: fixed
   display: block
   width: 100%
-  font-size: 13px
   background-image: linear-gradient(#fff, rgba(221, 221, 221, 0.66))
+
+ol,
+ul,
+li
+  list-style: none
+  margin: 0
+  padding: 0
 
 header
   border-bottom: 1px solid $grey-light
@@ -31,6 +52,18 @@ footer
   bottom: 0
   box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.08)
 
+%status-ball
+  content: ''
+  width: 15px
+  height: 15px
+  border-radius: 20px
+  position: absolute
+
+%center
+  transform: translate3d(-50%, -50%, 0px)
+  top: 50%
+  left: 50%
+
 //
 // Status component
 //
@@ -39,18 +72,77 @@ footer
 .status__IP
   float: right
 .status
-  width: 15px
-  height: 15px
-  transform: translate3d(-50%, -50%, 0px)
-  border-radius: 20px
-  top: 50%
-  left: 50%
-  position: absolute
-  // TODO: make these prettier
-  background-color: red
+  @extend %status-ball, %center
+
+  background-color: $state-disconnected
 
   &.status--connected
-    background-color: green
+    background-color: $state-connected
 
-.certificateList
-  margin: 40px 10px
+.App
+  height: 100%
+  position: relative
+
+//
+// Lists
+//
+.Certificate__list
+  position: absolute
+  top: 40px
+  bottom: 40px
+  width: 100%
+  overflow-y: scroll
+
+.List
+  line-height: 27px
+
+  .List__item
+    padding: 10px 10px 10px 30px
+    position: relative
+    border-bottom: 1px solid $grey-light
+
+    &.List__item--connected:before
+      background-color: $state-connected
+
+    &.List__item--disconnected:before
+      background-color: $state-disconnected
+
+    &.List__item--pending:before
+      background-color: $state-pending
+
+    &:before
+      @extend %status-ball
+
+      width: 10px
+      height: 10px
+      top: 19px
+      left: 10px
+
+    &:hover
+      background-color: $sweet-purple-saturated
+
+    .Button
+      float: right
+      visibility: hidden
+
+    &:hover .Button
+      visibility: visible
+
+//
+// Buttons
+//
+.Button
+  padding: 6px 10px
+  border: 1px solid #bfc8d3
+  border-radius: 2px
+  box-shadow: inset 0 -3px rgba(0,0,0,0.05),inset 0 1px #fff,0px 1px 2px rgba(0,0,0,0.1)
+  background-color: #f1f4f9
+  background-image: linear-gradient(#f7faff,#e8ebf0)
+  color: #737c93
+  text-shadow: 0 1px #fff
+  outline: none
+
+  &:active
+    background-color: #eef1f6
+    background-image: linear-gradient(#e8ebf0,#f7faff)
+    box-shadow: inset 0 1px rgba(0,0,0,0.15)

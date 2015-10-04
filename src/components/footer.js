@@ -4,7 +4,7 @@ export default class Footer extends React.Component {
   render() {
     return (
       <footer>
-        <small>Footer</small>
+        <span>Footer</span>
       </footer>
     )
   }
